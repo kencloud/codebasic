@@ -7,10 +7,12 @@
 	- init remote repo
 
 		`mkdir project_name.git`
+
 		`git init --bare`
 
 	- add remote repo
 
 		`git remote add repo_name file://d:/.../project_name.git`
+
 		`git push repo_name master`
 
