@@ -28,3 +28,7 @@ set PATH=%PATH%;%MONGODB%\bin
 
 @REM Final
 @REM clear
+
+
+@REM This is for home PC env setup
+@REM last update 2014/05/01
