@@ -1,0 +1,62 @@
+/*
+My customized tasks
+
+Usage:
+add this line to the end of build.gradle
+    apply from: mytasks.gradle
+*/
+
+project.ext {
+    // dir layout: http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html
+    dirs = [
+        'src/main/java',
+        'src/main/resources',
+        'src/main/resources/META-INF',
+        'src/test/java',
+        'src/test/resources',
+        'src/main/scripts',
+        'src/main/config',
+    ]
+}
+
+task listDirs << {
+    project.dirs.each { println it }
+    println sourceSets.main.java.srcDirs.collect{ it.toString() }
+}
+
+task createDirs << {
+    project.dirs.each { 
+        println "crteate dir: ${it}"
+        new File(it).mkdirs() 
+    }
+}
+
+task copyConfig(type: Copy) {
+    from 'src/main/config'
+    into 'dist/config'
+}
+
+task copyBin(type: Copy) {
+    from 'src/main/scripts'
+    into 'dist/bin'
+}
+
+task copyJar(type: Copy) {
+    from 'build/libs'
+    into 'dist/libs'
+}
+
+task copyExtJar(type: Copy) {
+    configurations.compile.each {
+        from it
+        into 'dist/libs'
+    }
+}
+
+task copyAll(dependsOn: [copyConfig, copyBin, copyJar, copyExtJar]) << {
+    println "copy to distribution"
+}
+
+task showExtJar << {
+    configurations.compile.each { println it.toString().tokenize('\\')[-1] }
+}
