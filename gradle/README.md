@@ -26,4 +26,8 @@
 
 - List gradle tasks
 	`gradle tasks`
- 
+
+
+#### Reference resources
+- [http://spring.io/guides/gs/gradle/](http://spring.io/guides/gs/gradle/ "get start")
+- 
