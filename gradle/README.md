@@ -1,7 +1,7 @@
 ### setup gradle project
 
 - create gradle basic
-	`gradle init --type basic`
+	`gradle init --type java-library`
 
 - Add plugin
 	`apply plugin: 'idea'`
